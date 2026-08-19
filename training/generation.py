@@ -17,3 +17,16 @@ def generate_text_simple(model, idx, max_new_tokens, context_size):
         idx = torch.cat((idx, idx_next), dim = 1)
 
     return idx
+
+def text_to_token_ids(text, tokenizer):
+    """Helper function for conversion from text to token IDs."""
+    encoded = tokenizer.encode(text, allowed_special = {'<|endoftext|>'})
+    # GPT model expects tensor (b, num_tokens)
+    encoded_tensor = torch.tensor(encoded).unsqueeze(0)
+    return encoded_tensor
+
+def token_ids_to_text(token_ids, tokenizer):
+    """Helper function for conversion from token IDs to text."""
+    # Decode method expects 1d tensor
+    flat = token_ids.squeeze(0)
+    return tokenizer.decode(flat.tolist())
