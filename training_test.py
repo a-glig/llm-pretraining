@@ -3,6 +3,7 @@ import tiktoken
 
 from model.gpt import GPTModel
 from model.config import GPT_CONFIG_124M
+from training.generation import generate, token_ids_to_text, text_to_token_ids
 from training.train import train_model_simple
 from data.data_loader import create_dataloader_v1
 
@@ -52,3 +53,20 @@ train_losses, val_losses, tokens_seen = train_model_simple(
     num_epochs = num_epochs, eval_freq = 5, eval_iter = 5,
     start_context = "Every effort moves you", tokenizer = tokenizer 
 )
+
+model.to("cpu")
+model.eval()
+
+# Generate text by using temperature scaling and top-k sampling.
+
+torch.manual_seed(123)
+token_ids = generate(
+    model = model, 
+    idx = text_to_token_ids("Every effort moves you", tokenizer),
+    max_new_tokens = 15,
+    context_size = GPT_CONFIG_124M["context_length"],
+    top_k = 25,
+    temperature = 1.4
+)
+
+print("Output text:\n", token_ids_to_text(token_ids, tokenizer))
