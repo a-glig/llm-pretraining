@@ -1,26 +1,30 @@
-import tiktoken
 import torch
+import tiktoken
 
-from data.data_loader import create_dataloader_v1
+from model.gpt import GPTModel
 from model.config import GPT_CONFIG_124M
+from training.train import train_model_simple
+from data.data_loader import create_dataloader_v1
 
+# Initialize model and relevant components
+torch.manual_seed(123)
+model = GPTModel(GPT_CONFIG_124M)
+tokenizer = tiktoken.get_encoding("gpt2")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+optimizer = torch.optim.AdamW(
+    model.parameters(),
+    lr = 0.0004, weight_decay = 0.1
+)
+
+# Create training and validation dataset.
 file_path = "the-verdict.txt"
 with open(file_path, "r", encoding = "utf-8") as file:
     text_data = file.read()
-
-tokenizer = tiktoken.get_encoding("gpt2")
-
-total_characters = len(text_data)
-total_tokens = len(tokenizer.encode(text_data))
-print("Characters:", total_characters)
-print("Tokens:", total_tokens) 
 
 train_ratio = 0.9
 split_idx = int(train_ratio*len(text_data))
 train_data = text_data[:split_idx]
 val_data = text_data[split_idx:]
-
-torch.manual_seed(123)
 
 train_loader = create_dataloader_v1(
     train_data,
@@ -42,10 +46,9 @@ val_loader = create_dataloader_v1(
     num_workers = 0
 )
 
-print("Train loader:")
-for inputs, targets in train_loader:
-    print(inputs.shape, targets.shape)
-
-print("\nValidation loader:")
-for inputs, targets in val_loader:
-    print(inputs.shape, targets.shape)
+num_epochs = 10
+train_losses, val_losses, tokens_seen = train_model_simple(
+    model, train_loader, val_loader, optimizer, device,
+    num_epochs = num_epochs, eval_freq = 5, eval_iter = 5,
+    start_context = "Every effort moves you", tokenizer = tokenizer 
+)

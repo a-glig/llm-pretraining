@@ -18,6 +18,7 @@ def generate_text_simple(model, idx, max_new_tokens, context_size):
 
     return idx
 
+
 def text_to_token_ids(text, tokenizer):
     """Helper function for conversion from text to token IDs."""
     encoded = tokenizer.encode(text, allowed_special = {'<|endoftext|>'})
@@ -25,8 +26,26 @@ def text_to_token_ids(text, tokenizer):
     encoded_tensor = torch.tensor(encoded).unsqueeze(0)
     return encoded_tensor
 
+
 def token_ids_to_text(token_ids, tokenizer):
     """Helper function for conversion from token IDs to text."""
     # Decode method expects 1d tensor
     flat = token_ids.squeeze(0)
     return tokenizer.decode(flat.tolist())
+
+
+def generate_and_print_sample(model, tokenizer, device, start_context):
+    """
+    Generates sample text to track the model's progress during training.
+    """
+    model.eval()
+    context_size = model.pos_emb.weight.shape[0]
+    encoded = text_to_token_ids(start_context, tokenizer).to(device)
+    with torch.no_grad():
+        token_ids = generate_text_simple(
+            model = model, idx = encoded, 
+            max_new_tokens = 50, context_size = context_size
+        )
+    decoded_text = token_ids_to_text(token_ids, tokenizer)
+    print(decoded_text.replace("\n", " "))
+    model.train()
