@@ -6,7 +6,7 @@ import time
 raw_dir = Path("arxiv/raw")
 raw_dir.mkdir(parents = True, exist_ok = True)
 
-with open("arxiv/papers.csv", newline = "", encoding= "utf-8") as file:
+with open("data/papers.csv", newline = "", encoding= "utf-8") as file:
     reader = csv.DictReader(file)
 
     for row in reader:
@@ -23,6 +23,6 @@ with open("arxiv/papers.csv", newline = "", encoding= "utf-8") as file:
             print(f"Downloaded {arxiv_id}.")
 
         except Exception as e:
-            print(f"Failed to download {arxiv_id}: {e}")
+            print(f"Failed to download {arxiv_id}: {e}.")
 
         time.sleep(3)
