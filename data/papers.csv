@@ -1,0 +1,59 @@
+id,title,topic
+2503.16599,"Symmetries and M-theory-like Vacua in Four Dimensions",strings
+2506.15776,"D-branes in AdS$_{3}${\texttimes} S$^{3}${\texttimes} S$^{3}${\texttimes} S$^{1}$",strings
+2509.03578,"Towards a Heterotic Axiverse",strings
+2509.16029,"Sampling String Vacua Using Generative Models",strings
+2509.20527,"Non-linear sigma model in string field theory",strings
+2509.24703,"Aspects of strings without spacetime supersymmetry",strings
+2511.10601,"Classifying Fibers and Bases in Toric Hypersurface Calabi-Yau Threefolds",strings
+2602.07113,"Asymmetric orbifolds with vanishing one-loop vacuum energy",strings
+2603.07746,"On Type II$_0$ Loci in Moduli Space",strings
+2603.13468,"M-theory on $S^1\vee S^1$ as Type 0A",strings
+2605.06800,"$G_2$ flux compactifications",strings
+2606.28487,"Calabi-Yau Metrics with Full Moduli Dependence",strings
+2607.18402,"Warped Numerical Calabi-Yau Metrics",strings
+2102.01111,"Lectures on the Swampland Program in String Compactifications",swampland
+2503.05862,"Formulating the Weak Gravity Conjecture in AdS Space",swampland
+2504.01066,"Emergent Strings in Type IIB Calabi-Yau Compactifications",swampland
+2504.02645,"Black Holes, Moduli Stabilisation and the Swampland",swampland
+2511.13813,"Elementary Constituents Conjecture",swampland 
+2512.07930,"Inflationary Particle Production and the Swampland",swampland
+2603.11163,"Alice in Warpland: KK modes, Warped Compactifications and the Swampland",swampland
+2603.24667,"The Art of Branching: Cobordism Junctions of 10d String Theories",swampland
+2604.24843,"Optimal paths across potentials on scalar field space",swampland
+2605.28938,"Gravity Decoupling and Axionic Shift Symmetries",swampland
+2606.02708,"Supersymmetry, Large Extra Dimensions and the Gravitino Conjecture",swampland
+2607.22519,"Integral Scaling for EFT Strings from the Bottom-Up",swampland
+2608.11086,"Distance-Higuchi Bounds on Inflationary Field Ranges and Lifetimes",swampland
+2504.08634,"Scale separation, rolling solutions and entropy bounds",cosmology
+2504.14890,"Geometry of Kinematic Flow",cosmology
+2505.07934,"Localized Gravity, de Sitter, and the Horizon Criterion",cosmology
+2507.02738,"Cosmological constraints from UV/IR mixing",cosmology
+2507.04161,"Self-Tracking Solutions for Asymptotic Scalar Fields",cosmology
+2509.11340,"Dual is Different: EFTs, Axions and Nonpropagating Form Fields in Cosmology",cosmology
+2511.16404,"High-frequency Gravitational Waves from Superstring Phases in the Early Universe",cosmology
+2607.00789,"$\mathcal{N}=1$ spectra, cubic couplings and the rigid fate of DGKT",cosmology
+2607.27361,"Spectator Axions in String Inflation and Primordial Black Holes",cosmology
+2608.14780,"Catastrophic Inflation in the Axiverse",cosmology
+2509.04554,"A measure on the space of CFTs and pure 3D gravity",bhs_holography
+2510.06309,"Detecting Black Hole Microstates",bhs_holography
+2511.03105,"BPS phases and fortuity in higher spin holography",bhs_holography
+2512.14818,"Flat Holography & Holographic Renormalization: Scalar Field",bhs_holography
+2601.22077,"A Reverse Black Hole Information Problem",bhs_holography
+2603.05186,"Introduction to holography",bhs_holography
+2603.06560,"Higher-dimensional BKL dynamics in AdS black holes",bhs_holography
+2604.02514,"Holographic Banners",bhs_holography
+2604.14011,"Properties of black holes in non-linear electrodynamics",bhs_holography
+2607.03344,"Falling through the horizon of a quantum black hole",bhs_holography
+1308.1697,"Scattering Amplitudes",qft_amplitudes
+2412.20639,"Open String Amplitudes: Singularities, Asymptotics, and New Representations",qft_amplitudes
+2506.19705,"The gravitational Compton amplitude from flat and curved spacetimes at second post-Minkowskian order",qft_amplitudes
+2512.05017,"The Magnus expansion in relativistic quantum field theory",qft_amplitudes
+2512.14618,"A Compact Formula for Conserved Three-Point Tensor Structures in 4D CFT",qft_amplitudes
+2512.23791,"Energy correlators in four-dimensional gravity",qft_amplitudes
+2601.05951,"Long-Range Interactions in Celestial CFT",qft_amplitudes
+2602.02783,"QCD Scattering Amplitudes and Prescriptive Unitarity",qft_amplitudes
+2602.03841,"Cosmological Correlator Discontinuities from Scattering Amplitudes",qft_amplitudes
+2603.04485,"Higher-Spin and Higher-Point Constraints on Stringy Amplitudes",qft_amplitudes
+2604.24844,"Three-Gluon Scattering Amplitude in de Sitter Spacetime",qft_amplitudes
+2606.28193,"Quantum anomalies from three-point on-shell bootstrap",qft_amplitudes

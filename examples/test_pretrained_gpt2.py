@@ -13,7 +13,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Load pretrained GPT-2 weights
 state_dict = torch.load(
     "checkpoints/gpt2_124M.pth",
-    map_location= "cpu",
+    map_location= device,
     weights_only = True
 )
 gpt.load_state_dict(state_dict)
