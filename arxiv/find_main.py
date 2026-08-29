@@ -38,5 +38,3 @@ def print_main_files():
                 print(f"{arxiv_id}: {main_file.name}")
             except Exception as e:
                 print(f"{arxiv_id} failed: {e}")
-
-print_main_files()
