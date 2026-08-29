@@ -2,4 +2,5 @@ __pycache__/
 .DS_Store
 gpt2/
 checkpoints/
-arxiv/
+arxiv/extracted/
+arxiv/raw/

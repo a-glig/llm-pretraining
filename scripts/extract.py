@@ -6,7 +6,7 @@ raw_dir = Path("arxiv/raw")
 extracted_dir = Path("arxiv/extracted")
 extracted_dir.mkdir(parents = True, exist_ok = True)
 
-with open("data/papers.csv", newline = "", encoding = "utf-8") as file:
+with open("arxiv/papers.csv", newline = "", encoding = "utf-8") as file:
     reader = csv.DictReader(file)
 
     for row in reader:
