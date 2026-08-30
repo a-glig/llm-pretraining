@@ -4,3 +4,4 @@ gpt2/
 checkpoints/
 arxiv/extracted/
 arxiv/raw/
+text_cleaned.txt

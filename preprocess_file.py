@@ -1,6 +1,7 @@
 import re
 
 from arxiv.find_main import find_main_tex
+from latex_patterns import REMOVE_COMMANDS
 
 # Example: Swampland review
 arxiv_id = "2102.01111"
@@ -20,6 +21,40 @@ def remove_preamble_postamble(text):
 
     return text[start:end]
 
+
+def remove_comments(text):
+    """Remove comments from the text."""
+    return re.sub(r'(?<!\\)%.*','', text)
+
+
+def remove_commands(text):
+    """Remove LaTeX formatting commands."""
+    for command in sorted(REMOVE_COMMANDS, key = len, reverse = True):
+        pattern = re.escape(command)
+        text = re.sub(pattern, '', text)
+
+    return text
+
+
+def clean_whitespace(text):
+    """Perform whitespace cleanup."""
+    # Replace multiple tabs/spaces with a single space.
+    text = re.sub(r'[ \t]+', ' ', text)
+
+    # Replace line breaks within a paragraph with a space.
+    text = re.sub(r'(?<!\n)\n(?!\n)', ' ', text)
+
+    # Collapse three or more empty lines into two.
+    text = re.sub(r'\n{3,}', '\n\n', text)
+
+    return text
+
+
 raw_text = get_raw_text(main_file)
 text = remove_preamble_postamble(raw_text)
-print(text[:4000])
+text = remove_comments(text)
+text = remove_commands(text)
+text = clean_whitespace(text)
+
+with open("text_cleaned.txt", "w", encoding = "utf-8") as file:
+    file.write(text)
