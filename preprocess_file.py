@@ -2,6 +2,9 @@ import re
 
 from arxiv.find_main import find_main_tex
 from latex_patterns import REMOVE_COMMANDS
+from latex_patterns import PRESERVE_CONTENT
+from latex_patterns import REMOVE_CONTENT
+from latex_patterns import REMOVE_ENVIRONMENTS
 
 # Example: Swampland review
 arxiv_id = "2102.01111"
@@ -27,7 +30,46 @@ def remove_comments(text):
     return re.sub(r'(?<!\\)%.*','', text)
 
 
-def remove_commands(text):
+def clean_latex_patterns(text):
+    """Remove LaTeX code not needed for pre-training."""
+    text = _remove_enviroments(text)
+    text = _remove_content(text)
+    text = _preserve_content(text)
+    text = _remove_commands(text)
+
+    return text
+
+def _remove_enviroments(text):
+    """Remove specific LaTeX environments."""
+    for environment in sorted(REMOVE_ENVIRONMENTS, key = len, reverse = True):
+        pattern = (
+            r'\\begin\{' + re.escape(environment) + r'\}.*?'
+            r'\\end\{' + re.escape(environment) + r'\}'
+        )
+        text = re.sub(pattern, '', text, flags = re.DOTALL)
+
+    return text
+
+
+def _remove_content(text):
+    """Remove LaTeX command and wrapped content."""
+    for command in sorted(REMOVE_CONTENT, key = len, reverse = True):
+        pattern = re.escape(command) + r'\*?(?:\[[^]]*\])?\{([^}]*)\}'
+        text = re.sub(pattern, '', text)
+
+    return text
+
+
+def _preserve_content(text):
+    """Remove LaTeX command but preserve wrapped content."""
+    for command in sorted(PRESERVE_CONTENT, key = len, reverse = True):
+        pattern = re.escape(command) + r'\{([^}]*)\}'
+        text = re.sub(pattern, r'\1', text)
+
+    return text
+
+
+def _remove_commands(text):
     """Remove LaTeX formatting commands."""
     for command in sorted(REMOVE_COMMANDS, key = len, reverse = True):
         pattern = re.escape(command)
@@ -53,7 +95,7 @@ def clean_whitespace(text):
 raw_text = get_raw_text(main_file)
 text = remove_preamble_postamble(raw_text)
 text = remove_comments(text)
-text = remove_commands(text)
+text = clean_latex_patterns(text)
 text = clean_whitespace(text)
 
 with open("text_cleaned.txt", "w", encoding = "utf-8") as file:
