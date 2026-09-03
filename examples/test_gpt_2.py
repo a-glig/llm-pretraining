@@ -5,11 +5,10 @@ from model.gpt import GPTModel
 from model.config import GPT2_SMALL_CONFIG
 
 from training.train import train_model_simple
-from training.generation import (
-    generate, 
-    text_to_token_ids,
-    token_ids_to_text
-)
+from training.generation import generate_outputs
+
+from arxiv.find_main import find_main_tex
+from arxiv.preprocess import preprocess_file
 
 from data.data_loader import create_dataloader_v1
 
@@ -28,6 +27,8 @@ LEARNING_RATE = 1e-4
 WEIGHT_DECAY = 0.1
 
 CHECKPOINT_PATH = "checkpoints/gpt2_research_pretrained.pth"
+OUTPUT_BEFORE = "examples/output_before_pretraining.txt"
+OUTPUT_AFTER = "examples/output_after_pretraining.txt"
 
 # --------------------------------------------
 # DEVICE, TOKENIZER AND MODEL
@@ -58,29 +59,26 @@ gpt.eval()
 # EVALUATION BEFORE PRETRAINING
 # --------------------------------------------
 
-with open("inputs.txt", "r", encoding = "utf-8") as file:
+with open("examples/inputs.txt", "r", encoding = "utf-8") as file:
     inputs = file.read().splitlines()
 
-with open("output_text_completion.txt", "w", encoding = "utf-8") as file:
-    for input in inputs:
-        token_ids = generate(
-            model = gpt,
-            idx = text_to_token_ids(input, tokenizer),
-            max_new_tokens = 25,
-            context_size = CONTEXT_LENGTH,
-            temperature = 0
-        )  
-        output = token_ids_to_text(token_ids, tokenizer)
-
-        file.write(f"Prompt:\n{input}\n")
-        file.write(f"Completion:\n{output}\n\n")
+generate_outputs(
+    model = gpt,
+    tokenizer = tokenizer,
+    device = device,
+    inputs = inputs,
+    max_new_tokens = 25, 
+    temperature = 0, 
+    output_path = OUTPUT_BEFORE
+)
 
 # --------------------------------------------
 # DATASET
 # --------------------------------------------
 
-with open(f"text_cleaned.txt", "r", encoding = "utf-8") as file:
-    text_data = file.read()
+arxiv_id = "2102.01111"
+main_file = find_main_tex(arxiv_id)
+text_data = preprocess_file(main_file)
 
 train_ratio = 0.9
 split_idx = int(train_ratio*len(text_data))
@@ -133,12 +131,12 @@ torch.save({
 
 gpt.eval()
 
-for input in inputs:
-    token_ids = generate(
-        model = gpt,
-        idx = text_to_token_ids(input, tokenizer),
-        max_new_tokens = 25,
-        context_size = CONTEXT_LENGTH,
-        temperature = 0
-    )
-    print(token_ids_to_text(token_ids, tokenizer))
+generate_outputs(
+    model = gpt,
+    tokenizer = tokenizer,
+    device = device,
+    inputs = inputs,
+    max_new_tokens = 25, 
+    temperature = 0, 
+    output_path = OUTPUT_AFTER
+)

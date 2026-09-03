@@ -4,6 +4,6 @@ gpt2/
 checkpoints/
 arxiv/extracted/
 arxiv/raw/
-text_cleaned.txt
-inputs.txt
-output_text_completion.txt
+examples/inputs.txt
+examples/output_before_pretraining.txt
+examples/output_after_pretraining.txt

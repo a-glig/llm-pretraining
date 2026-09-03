@@ -1,14 +1,10 @@
 import re
 
-from arxiv.find_main import find_main_tex
 from arxiv.latex_patterns import REMOVE_COMMANDS
 from arxiv.latex_patterns import PRESERVE_CONTENT
 from arxiv.latex_patterns import REMOVE_CONTENT
 from arxiv.latex_patterns import REMOVE_ENVIRONMENTS
 
-# Example: Swampland review
-arxiv_id = "2102.01111"
-main_file = find_main_tex(arxiv_id)
 
 def get_raw_text(tex_file):
     """Load main .tex file and extract raw text."""
@@ -92,11 +88,12 @@ def clean_whitespace(text):
     return text
 
 
-raw_text = get_raw_text(main_file)
-text = remove_preamble_postamble(raw_text)
-text = remove_comments(text)
-text = clean_latex_patterns(text)
-text = clean_whitespace(text)
+def preprocess_file(file):
+    """Function combining all pre-processing commands."""
+    text = get_raw_text(file)
+    text = remove_preamble_postamble(text)
+    text = remove_comments(text)
+    text = clean_latex_patterns(text)
+    text = clean_whitespace(text)
 
-with open("text_cleaned.txt", "w", encoding = "utf-8") as file:
-    file.write(text)
+    return text

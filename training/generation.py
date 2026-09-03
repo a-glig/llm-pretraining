@@ -1,5 +1,7 @@
 import torch
 
+from model.config import GPT2_SMALL_CONFIG
+
 def generate_text_simple(model, idx, max_new_tokens, context_size):
     """
     A function for the GPT model to generate text. Appends the token that has 
@@ -52,7 +54,7 @@ def generate(model, idx, max_new_tokens, context_size,
         idx = torch.cat((idx, idx_next), dim = 1)
 
     return idx
-    
+
 
 def text_to_token_ids(text, tokenizer):
     """Helper function for conversion from text to token IDs."""
@@ -84,3 +86,25 @@ def generate_and_print_sample(model, tokenizer, device, start_context):
     decoded_text = token_ids_to_text(token_ids, tokenizer)
     print(decoded_text.replace("\n", " "))
     model.train()
+
+
+def generate_outputs(model, tokenizer, device, inputs, max_new_tokens, 
+                     temperature, output_path):
+    """Complete sentences from a list and write completions to a file."""
+    model.eval()
+
+    with open(output_path, "w", encoding = "utf-8") as file:
+        for input in inputs:
+            token_ids = generate(
+                model = model, 
+                idx = text_to_token_ids(input, tokenizer).to(device),
+                max_new_tokens = max_new_tokens,
+                context_size = GPT2_SMALL_CONFIG["context_length"],
+                temperature = temperature
+            ) 
+
+            output = token_ids_to_text(token_ids, tokenizer)
+
+            file.write(f"Prompt:\n{input}\n")
+            file.write(f"Completion:\n{output}\n")
+            file.write("\n" + ""*60 + "\n\n")
