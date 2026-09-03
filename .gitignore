@@ -5,3 +5,5 @@ checkpoints/
 arxiv/extracted/
 arxiv/raw/
 text_cleaned.txt
+inputs.txt
+output_text_completion.txt

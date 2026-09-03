@@ -1,10 +1,10 @@
 import re
 
 from arxiv.find_main import find_main_tex
-from latex_patterns import REMOVE_COMMANDS
-from latex_patterns import PRESERVE_CONTENT
-from latex_patterns import REMOVE_CONTENT
-from latex_patterns import REMOVE_ENVIRONMENTS
+from arxiv.latex_patterns import REMOVE_COMMANDS
+from arxiv.latex_patterns import PRESERVE_CONTENT
+from arxiv.latex_patterns import REMOVE_CONTENT
+from arxiv.latex_patterns import REMOVE_ENVIRONMENTS
 
 # Example: Swampland review
 arxiv_id = "2102.01111"

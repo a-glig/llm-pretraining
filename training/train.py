@@ -5,7 +5,7 @@ from .generation import generate_and_print_sample
 
 def train_model_simple(model, train_loader, val_loader,
                        optimizer, device, num_epochs, 
-                       eval_freq, eval_iter, start_context, tokenizer):
+                       eval_freq, eval_iter):
     """The main function for pretraining the LLM."""
     train_losses, val_losses, track_tokens_seen = [], [], []
     tokens_seen, global_step = 0, -1
@@ -35,10 +35,6 @@ def train_model_simple(model, train_loader, val_loader,
                       f"Train loss {train_loss:.3f}, "
                       f"Validation loss {val_loss:.3f}"
                     )
-
-        generate_and_print_sample(
-            model, tokenizer, device, start_context
-        )
 
     return train_losses, val_losses, track_tokens_seen
 
