@@ -128,5 +128,9 @@ REMOVE_ENVIRONMENTS = [
     'table*',
     'tabular',
     'tabular*',
+    'longtable',
+
+    # --- Bibliography ---
+    'thebibliography',
 
 ]

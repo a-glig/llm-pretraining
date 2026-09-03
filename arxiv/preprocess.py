@@ -1,5 +1,7 @@
 import re
+import csv
 
+from arxiv.find_main import find_main_tex
 from arxiv.latex_patterns import REMOVE_COMMANDS
 from arxiv.latex_patterns import PRESERVE_CONTENT
 from arxiv.latex_patterns import REMOVE_CONTENT
@@ -97,3 +99,18 @@ def preprocess_file(file):
     text = clean_whitespace(text)
 
     return text
+
+
+def combine_paper_text():
+    """Combine text from all papers in a list."""
+    papers = []
+    with open("arxiv/papers.csv", newline = "", encoding= "utf-8") as file:
+        reader = csv.DictReader(file)
+
+        for row in reader:
+            arxiv_id = row["id"]
+            main_file = find_main_tex(arxiv_id)
+            text_data = preprocess_file(main_file)
+            papers.append(text_data)
+
+    return papers

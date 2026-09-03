@@ -7,8 +7,7 @@ from model.config import GPT2_SMALL_CONFIG
 from training.train import train_model_simple
 from training.generation import generate_outputs
 
-from arxiv.find_main import find_main_tex
-from arxiv.preprocess import preprocess_file
+from arxiv.preprocess import combine_paper_text
 
 from data.data_loader import create_dataloader_v1
 
@@ -76,14 +75,13 @@ generate_outputs(
 # DATASET
 # --------------------------------------------
 
-arxiv_id = "2102.01111"
-main_file = find_main_tex(arxiv_id)
-text_data = preprocess_file(main_file)
+papers = combine_paper_text()
+split_idx = len(papers) - 2
+train_papers = papers[:split_idx]
+val_papers = papers[split_idx:]
 
-train_ratio = 0.9
-split_idx = int(train_ratio*len(text_data))
-train_data = text_data[:split_idx]
-val_data = text_data[split_idx:]
+train_data = "\n<|endoftext|>\n".join(train_papers)
+val_data = "\n<|endoftext|>\n".join(val_papers)
 
 train_loader = create_dataloader_v1(
     train_data,
