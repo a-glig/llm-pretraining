@@ -1,4 +1,6 @@
 import torch.nn as nn
+import matplotlib.pyplot as plt
+
 
 def calc_loss_batch(input_batch, target_batch, model, device):
     """Training and validation loss for a single batch."""
@@ -9,6 +11,7 @@ def calc_loss_batch(input_batch, target_batch, model, device):
         logits.flatten(0,1), target_batch.flatten()
     )
     return loss
+
 
 def calc_loss_loader(data_loader, model, device, num_batches = None):
     """Training and validation loss for entire dataset"""
@@ -29,3 +32,21 @@ def calc_loss_loader(data_loader, model, device, num_batches = None):
             break
 
     return total_loss/num_batches
+
+
+def plot_losses(train_losses, val_losses, tokens_seen):
+    """
+    Plot training and validation loss against the number of tokens used 
+    for training.
+    """
+    fig, ax = plt.subplots(figsize=(5, 3))
+    ax.plot(tokens_seen, train_losses, label="Training loss")
+    ax.plot(
+        tokens_seen, val_losses, linestyle="-.", label="Validation loss"
+    )
+    ax.set_xlabel("Tokens seen")
+    ax.set_ylabel("Loss")
+    ax.legend(loc="upper right")
+    fig.tight_layout()
+    fig.savefig("losses.png", dpi=300, bbox_inches="tight")
+    plt.show()

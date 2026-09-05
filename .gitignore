@@ -4,7 +4,6 @@ gpt2/
 checkpoints/
 arxiv/extracted/
 arxiv/raw/
-examples/inputs.txt
 examples/output_before_pretraining.txt
 examples/output_after_pretraining.txt
-combine_papers.py
+losses.png

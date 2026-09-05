@@ -1,0 +1,70 @@
+Prompt:
+The swampland program posits that not any effective field theory
+Completion:
+The swampland program posits that not any effective field theory can be expected to be consistent with the Swampland program. This is a critical point for the Swampland
+
+
+
+Prompt:
+Any effective field theory has a quantum gravity cutoff above which
+Completion:
+Any effective field theory has a quantum gravity cutoff above which the field theory is not effective. The effective field theory is then a supersymmetric field theory, which is the same as
+
+
+
+Prompt:
+Global symmetries are expected to be absent in quantum gravity because
+Completion:
+Global symmetries are expected to be absent in quantum gravity because of the presence of a non-trivial $\mathcal{N}_p$-brane. The presence
+
+
+
+Prompt:
+The completeness hypothesis says that in a gauge field theory coupled to gravity 
+Completion:
+The completeness hypothesis says that in a gauge field theory coupled to gravity  \begin{equation}  \mathcal{G}_\mathcal{G}_\mathcal{
+
+
+
+Prompt:
+The weak gravity conjecture can be derived from the kinematic condition
+Completion:
+The weak gravity conjecture can be derived from the kinematic condition \eqref{kinematic_condition} \beq \frac{1}{2} \left( \frac
+
+
+
+Prompt:
+The extension of the weak gravity conjecture to theories with multiple gauge fields
+Completion:
+The extension of the weak gravity conjecture to theories with multiple gauge fields is the conjecture that the theory is not a single gauge field. This is the conjecture that the theory is not a single gauge
+
+
+
+Prompt:
+The swampland distance conjecture states that 
+Completion:
+The swampland distance conjecture states that  \begin{equation}  \frac{1}{2} \left( \frac{1}{2} \
+
+
+
+Prompt:
+According to the emergent string conjecture, only two
+Completion:
+According to the emergent string conjecture, only two states can be considered in the string theory limit. The first is the emergent string limit, which is the limit of the
+
+
+
+Prompt:
+The species scale is given in terms of the number
+Completion:
+The species scale is given in terms of the number of species in the worldsheet space. The species scale is then given by the number of species in the worldsheet space.
+
+
+
+Prompt:
+The refined version of the de Sitter conjecture additionally posits
+Completion:
+The refined version of the de Sitter conjecture additionally posits that the presence of a non-trivial $p$-form $\mathcal{N}_p$ in
+
+
+

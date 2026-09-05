@@ -5,6 +5,7 @@ from model.gpt import GPTModel
 from model.config import GPT2_SMALL_CONFIG
 
 from training.train import train_model_simple
+from training.loss import plot_losses
 from training.generation import generate_outputs
 
 from arxiv.preprocess import combine_paper_text
@@ -15,7 +16,7 @@ from data.data_loader import create_dataloader_v1
 # CONFIGURATION
 # --------------------------------------------
 
-NUM_EPOCHS = 3
+NUM_EPOCHS = 1
 BATCH_SIZE = 2
 CONTEXT_LENGTH = GPT2_SMALL_CONFIG["context_length"]
 
@@ -26,8 +27,9 @@ LEARNING_RATE = 1e-4
 WEIGHT_DECAY = 0.1
 
 CHECKPOINT_PATH = "checkpoints/gpt2_research_pretrained.pth"
-OUTPUT_BEFORE = "examples/output_before_pretraining.txt"
-OUTPUT_AFTER = "examples/output_after_pretraining.txt"
+INPUT_PATH = "experiments/inputs.txt"
+OUTPUT_BEFORE = "experiments/output_before_pretraining.txt"
+OUTPUT_AFTER = "experiments/output_after_pretraining.txt"
 
 # --------------------------------------------
 # DEVICE, TOKENIZER AND MODEL
@@ -58,7 +60,7 @@ gpt.eval()
 # EVALUATION BEFORE PRETRAINING
 # --------------------------------------------
 
-with open("examples/inputs.txt", "r", encoding = "utf-8") as file:
+with open(INPUT_PATH, "r", encoding = "utf-8") as file:
     inputs = file.read().splitlines()
 
 generate_outputs(
@@ -111,6 +113,9 @@ train_losses, val_losses, tokens_seen = train_model_simple(
     gpt, train_loader, val_loader, optimizer, device,
     num_epochs = NUM_EPOCHS, eval_freq = EVAL_FREQ, eval_iter = EVAL_ITER
 )
+
+# Plot training and validation loss
+plot_losses(train_losses, val_losses, tokens_seen)
 
 # --------------------------------------------
 # SAVE CHECKPOINT
