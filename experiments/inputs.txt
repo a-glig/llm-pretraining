@@ -1,10 +1,10 @@
-The swampland program posits that not any effective field theory
-Any effective field theory has a quantum gravity cutoff above which
-Global symmetries are expected to be absent in quantum gravity because
-The completeness hypothesis says that in a gauge field theory coupled to gravity 
-The weak gravity conjecture can be derived from the kinematic condition
-The extension of the weak gravity conjecture to theories with multiple gauge fields
-The swampland distance conjecture states that 
-According to the emergent string conjecture, only two
-The species scale is given in terms of the number
-The refined version of the de Sitter conjecture additionally posits
+The Swampland Program aims to determine the constraints
+The Repulsive Force Conjecture stems from the idea
+The Emergent String Conjecture has been mainly studied
+Most insights into black holes from string theory
+The Cobordism Conjecture states that
+In inflationary cosmology, the condition $H \leq \Lambda_{sp}$
+The Swampland Distance Conjecture implies the existence of infinite
+One instance of an end of the world boundary
+Realistic string compactifications typically involve moduli stabilization, giving rise 
+Gravity-decoupling limits naturally appear when

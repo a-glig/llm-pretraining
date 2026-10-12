@@ -16,10 +16,10 @@ The project currently implements:
 
 ## Current experiment
 
-I'm currently investigating how well a GPT-2 model can be adapted to the
+I'm investigating how well a GPT-2 model can be adapted to the
 language of research papers through continued pretraining.
 
-The current experiment uses a small sample of research papers and compares text 
+The experiment uses a small sample of research papers and compares text 
 generation before and after continued pretraining.
 
 ## Future work

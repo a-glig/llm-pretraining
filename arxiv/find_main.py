@@ -11,7 +11,7 @@ def find_main_tex(arxiv_id):
     for tex_file in tex_files:
         text = tex_file.read_text(encoding = "utf-8", errors = "ignore")
 
-        if r"\documentclass" in text and r"\begin{document}" in text:
+        if (r"\documentclass" in text and r"\begin{document}" in text):
             main_candidates.append(tex_file)
 
 
@@ -38,3 +38,5 @@ def print_main_files():
                 print(f"{arxiv_id}: {main_file.name}")
             except Exception as e:
                 print(f"{arxiv_id} failed: {e}")
+
+print_main_files()

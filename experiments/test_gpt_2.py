@@ -68,7 +68,7 @@ generate_outputs(
     tokenizer = tokenizer,
     device = device,
     inputs = inputs,
-    max_new_tokens = 25, 
+    max_new_tokens = 30, 
     temperature = 0, 
     output_path = OUTPUT_BEFORE
 )
@@ -139,7 +139,7 @@ generate_outputs(
     tokenizer = tokenizer,
     device = device,
     inputs = inputs,
-    max_new_tokens = 25, 
+    max_new_tokens = 30, 
     temperature = 0, 
     output_path = OUTPUT_AFTER
 )

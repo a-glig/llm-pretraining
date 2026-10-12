@@ -14,21 +14,26 @@ def download_papers(csv_path = "arxiv/papers.csv", output_dir = "arxiv/raw"):
 
         for row in reader:
             arxiv_id = row["id"]
+            url = f"https://export.arxiv.org/e-print/{arxiv_id}"
+            archive = output_dir / f"{arxiv_id}.tar"
 
-            try:
-                url = f"https://export.arxiv.org/e-print/{arxiv_id}"
-                response = requests.get(url)
-                response.raise_for_status()
+            for attempt in range(3):
+                try:
+                    response = requests.get(url, timeout = 120)
+                    response.raise_for_status()
+                    archive.write_bytes(response.content)
 
-                archive = output_dir / f"{arxiv_id}.tar"
-                archive.write_bytes(response.content)
+                    print(f"Downloaded {arxiv_id}.")
+                    break
 
-                print(f"Downloaded {arxiv_id}.")
+                except Exception as e:
+                    print(f"Failed to download {arxiv_id}: {e}.")
 
-            except Exception as e:
-                print(f"Failed to download {arxiv_id}: {e}.")
-
-            time.sleep(3)
+                    if attempt < 2:
+                        print("Retrying in 2 minutes...")
+                        time.sleep(120)
+            
+            time.sleep(30)
 
 
 def extract_papers(csv_path = "arxiv/papers.csv", raw_dir = "arxiv/raw",
