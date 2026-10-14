@@ -3,6 +3,10 @@
 An educational project for implementing and experimenting with GPT-style
 language models from scratch.
 
+## Screenshots
+
+![LLM Pretraining Overview](screenshots/llm_overview.png)
+
 ## Features
 
 The project currently implements:
