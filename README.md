@@ -16,7 +16,7 @@ The project currently implements:
 - Text generation with top-k sampling and temperature scaling
 - Loading pretrained GPT-2 weights
 - Preprocessing of research paper files for further pretraining
-- First experiment: Continued pretraining on 10 papers
+- First experiment: Continued pretraining on 113 papers
 
 ## Current experiment
 
