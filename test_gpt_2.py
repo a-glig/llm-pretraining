@@ -16,12 +16,12 @@ from data.data_loader import create_dataloader_v1
 # CONFIGURATION
 # --------------------------------------------
 
-NUM_EPOCHS = 1
-BATCH_SIZE = 2
+NUM_EPOCHS = 2
+BATCH_SIZE = 4
 CONTEXT_LENGTH = GPT2_SMALL_CONFIG["context_length"]
 
-EVAL_FREQ = 10
-EVAL_ITER = 10
+EVAL_FREQ = 50
+EVAL_ITER = 20
 
 LEARNING_RATE = 1e-4
 WEIGHT_DECAY = 0.1
@@ -68,7 +68,7 @@ generate_outputs(
     tokenizer = tokenizer,
     device = device,
     inputs = inputs,
-    max_new_tokens = 30, 
+    max_new_tokens = 20, 
     temperature = 0, 
     output_path = OUTPUT_BEFORE
 )
@@ -78,7 +78,7 @@ generate_outputs(
 # --------------------------------------------
 
 papers = combine_paper_text()
-split_idx = len(papers) - 2
+split_idx = len(papers)-5
 train_papers = papers[:split_idx]
 val_papers = papers[split_idx:]
 
@@ -139,7 +139,7 @@ generate_outputs(
     tokenizer = tokenizer,
     device = device,
     inputs = inputs,
-    max_new_tokens = 30, 
+    max_new_tokens = 20, 
     temperature = 0, 
     output_path = OUTPUT_AFTER
 )

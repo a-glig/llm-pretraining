@@ -1,10 +1,10 @@
-The Swampland Program aims to determine the constraints
-The Repulsive Force Conjecture stems from the idea
-The Emergent String Conjecture has been mainly studied
-Most insights into black holes from string theory
-The Cobordism Conjecture states that
-In inflationary cosmology, the condition $H \leq \Lambda_{sp}$
-The Swampland Distance Conjecture implies the existence of infinite
-One instance of an end of the world boundary
-Realistic string compactifications typically involve moduli stabilization, giving rise 
-Gravity-decoupling limits naturally appear when
+The Swampland Program aims to determine which low-energy effective field theories
+According to the Weak Gravity Conjecture, there must be a state whose mass-to-charge ratio
+The Emergent String Conjecture implies that at infinite distance in moduli space
+Most insights into black holes from string theory arise from the observation that
+The Cobordism Conjecture states that all quantum gravity theories must
+In inflationary cosmology, swampland criteria constrain the potential by requiring
+The Swampland Distance Conjecture states that any infinite distance limit in moduli space
+One instance of an end-of-the-world-boundary in string theory arises when
+The species scale is defined as the energy scale at which the gravitational effective field theory
+In the context of string compactifications, moduli stabilization requires 

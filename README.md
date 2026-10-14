@@ -22,6 +22,8 @@ language of research papers through continued pretraining.
 The experiment uses a small sample of research papers and compares text 
 generation before and after continued pretraining.
 
+- [GPT-2 Domain Adaptation](reports/gpt2_experiment.pdf)
+
 ## Future work
 
 - Expand corpus of training data
